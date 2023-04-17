@@ -4,6 +4,7 @@
 // . Present folder
 // .. Parent folder
 // 'this' is represent for class they use
+// onClick / onChange / onSubmit / onMouseOver
 import React from "react";
 
 class MyComponent extends React.Component {
@@ -27,13 +28,28 @@ class MyComponent extends React.Component {
         // console.log(e)
     }
 
+    handleOnChangeInput = (e) => {
+        this.setState({
+            name: e.target.value
+        })
+    }
+
+    handleOnSubmit = (e) => {
+        e.preventDefault()
+        console.log(this.state)
+    }
+
     //JSX
     render() {
         return (
             <div>
                 My name is {this.state.name} and I'm {this.state.age}
-                <button onMouseOver={this.handleOnMouseOver}>Hover me!!</button>
-                <button onClick={(event) => { this.handleClick(event) }}>Click me!!</button>
+                <form onSubmit={(e) => this.handleOnSubmit(e)}>
+                    <input
+                        type="text"
+                        onChange={(event) => this.handleOnChangeInput(event)} />
+                    <button>Submit</button>
+                </form>
             </div>
         )
     }

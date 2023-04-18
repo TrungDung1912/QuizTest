@@ -12,12 +12,15 @@ import DisplayInfor from "./DisplayInfor";
 class MyComponent extends React.Component {
     //JSX
     //DRY: Don't repeat yourself
-    state = {
-        listUsers: [
-            { id: 1, name: 'Linh', age: 15 },
-            { id: 2, name: 'Dung', age: 50 },
-            { id: 3, name: 'Phanh', age: 20 },
-        ]
+    constructor(props) {
+        super(props);
+        this.state = {
+            listUsers: [
+                { id: 1, name: 'Linh', age: 15, },
+                { id: 2, name: 'Dung', age: 50, },
+                { id: 3, name: 'Phanh', age: 20, },
+            ]
+        }
     }
 
     handleAddNewUser = (obj) => {
@@ -32,6 +35,14 @@ class MyComponent extends React.Component {
         listUser = listUser.filter(user => user.id !== userID)
         this.setState({
             listUsers: listUser
+        })
+    }
+
+    handleFindUser = (userName) => {
+        let listUser = this.state.listUsers
+        listUser = listUser.filter(user => user.name === userName)
+        this.setState({
+            listUsers: listUser,
         })
     }
 
@@ -50,6 +61,7 @@ class MyComponent extends React.Component {
                     <DisplayInfor
                         listUsers={this.state.listUsers}
                         handleDeleteUser={this.handleDeleteUser}
+                        handleFindUser={this.handleFindUser}
                     />
                 </div>
                 <div className="b">

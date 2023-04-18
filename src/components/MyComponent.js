@@ -6,7 +6,7 @@
 // 'this' is represent for class they use
 // onClick / onChange / onSubmit / onMouseOver
 import React from "react";
-import UserInfor from "./UserInfor";
+import AddUserInfor from "./AddUserInfor";
 import DisplayInfor from "./DisplayInfor";
 
 class MyComponent extends React.Component {
@@ -19,10 +19,20 @@ class MyComponent extends React.Component {
             { id: 3, name: 'Phanh', age: 20 },
         ]
     }
+
+    handleAddNewUser = (obj) => {
+        this.setState({
+            listUsers: [obj, ...this.state.listUsers],
+        })
+        console.log(obj)
+    }
+
     render() {
         return (
             <div>
-                <UserInfor />
+                <AddUserInfor
+                    handleAddNewUser={this.handleAddNewUser}
+                />
                 <br /><br />
                 <DisplayInfor
                     listUsers={this.state.listUsers}

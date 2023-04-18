@@ -30,11 +30,17 @@ class DisplayInfor extends React.Component {
                     <>
                         {listUsers.map((listUser) => {
                             return (
-                                <div style={{ paddingBottom: '10px' }} key={listUser.id} className={+listUser.age > 18 ? "green" : "red"}>
-                                    <div>My name's {listUser?.name}</div>
-                                    <div>My age's {listUser?.age}</div>
+                                <div key={listUser.id} className={+listUser.age > 18 ? "green" : "red"}>
+                                    <div style={{ paddingBottom: '10px' }} >
+                                        <div>My name's {listUser?.name}</div>
+                                        <div>My age's {listUser?.age}</div>
+                                    </div>
+                                    <div>
+                                        <button onClick={() => { this.props.handleDeleteUser(listUser.id) }}>Delete</button>
+                                    </div>
                                     <hr />
                                 </div>
+
                             )
                         })
                         }

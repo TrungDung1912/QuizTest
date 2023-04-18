@@ -26,10 +26,22 @@ class MyComponent extends React.Component {
         })
         console.log(obj)
     }
+
+    handleDeleteUser = (userID) => {
+        let listUser = this.state.listUsers
+        listUser = listUser.filter(user => user.id !== userID)
+        this.setState({
+            listUsers: listUser
+        })
+    }
+
     //<></>: React.Fragment
     render() {
+        // const test = { name: 'Linh', age: 18 }
         return (
             <>
+                {/* {console.log(test)} */}
+                {/* {JSON.stringify(test)} */}
                 <div className="a">
                     <AddUserInfor
                         handleAddNewUser={this.handleAddNewUser}
@@ -37,6 +49,7 @@ class MyComponent extends React.Component {
                     <br /><br />
                     <DisplayInfor
                         listUsers={this.state.listUsers}
+                        handleDeleteUser={this.handleDeleteUser}
                     />
                 </div>
                 <div className="b">

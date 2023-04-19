@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import './DisplayInfor.scss';
 import logo from './../logo.svg'
 
-//stateless vs stateful
+//stateless(function) vs stateful(class)
 // class DisplayInfor extends React.Component {
 //     render() {
 //         console.log('Render')
@@ -43,12 +43,26 @@ import logo from './../logo.svg'
 //         )
 //     }
 // }
+
 const DisplayInfor = (props) => {
     const { listUsers } = props
+    //Destructuring assignment
+    const [isShowHideListUsers, setShowHideListUsers] = useState(true);
+
+    // this.state = {
+    //     isShowHideListUsers: true
+    // }
+    const handleShowHideListUser = () => {
+        setShowHideListUsers(!isShowHideListUsers)
+    }
+
     return (
         //props => properties //render from parent to child
         <div className="display-infor-container">
-            {true &&
+            <div>
+                <span onClick={() => { handleShowHideListUser() }}>{isShowHideListUsers === true ? 'Hide list users' : 'Show list users'}</span>
+            </div>
+            {isShowHideListUsers &&
                 <>
                     {listUsers.map((listUser) => {
                         return (

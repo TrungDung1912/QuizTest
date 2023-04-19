@@ -72,7 +72,7 @@ import DisplayInfor from "./DisplayInfor";
 //     }
 // }
 
-const MyComponent = (props) => {
+const MyComponent = () => {
     const [listUsers, setListUsers] = useState(
         [
             { id: 1, name: 'Linh', age: 15, },

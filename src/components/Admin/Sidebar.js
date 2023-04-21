@@ -8,12 +8,14 @@ import {
     SidebarFooter,
     SidebarContent,
 } from 'react-pro-sidebar';
-
-import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
+import { SiReactivex } from "react-icons/si";
+import { MdDashboard } from "react-icons/md";
+import { FaGem } from 'react-icons/fa';
 import sidebarBg from '../../assets/bg2.jpg';
+import './Sidebar.scss'
 
 const Sidebar = (props) => {
-    const { image, collapsed, rtl, toggled, handleToggleSidebar } = props
+    const { collapsed, toggled, handleToggleSidebar } = props;
     return (
         <>
             <ProSidebar
@@ -36,28 +38,28 @@ const Sidebar = (props) => {
                             whiteSpace: 'nowrap',
                         }}
                     >
-                        DunG Bum
+                        <SiReactivex size={'2em'} color={"pink"} />
+                        <span style={{ paddingLeft: "20px" }}>DungBumBeo</span>
                     </div>
                 </SidebarHeader>
 
                 <SidebarContent>
                     <Menu iconShape="circle">
                         <MenuItem
-                            icon={<FaTachometerAlt />}
-                            suffix={<span className="badge red">New</span>}
+                            icon={<MdDashboard />}
+                            suffix={<span className='badge red'>New</span>}
                         >
-                            dashboard
+                            Dashboard
                         </MenuItem>
-                        <MenuItem icon={<FaGem />}> components </MenuItem>
                     </Menu>
                     <Menu iconShape="circle">
                         <SubMenu
-                            suffix={<span className="badge yellow">3</span>}
-                            icon={<FaRegLaughWink />}
+                            icon={<FaGem />}
+                            title="Features"
                         >
-                            <MenuItem> 1</MenuItem>
-                            <MenuItem> 2</MenuItem>
-                            <MenuItem> 3</MenuItem>
+                            <MenuItem>Users Management</MenuItem>
+                            <MenuItem >Quiz Test Management</MenuItem>
+                            <MenuItem>Question Bank Management</MenuItem>
                         </SubMenu>
 
                     </Menu>
@@ -71,14 +73,13 @@ const Sidebar = (props) => {
                         }}
                     >
                         <a
-                            href="https://github.com/azouaoui-med/react-pro-sidebar"
+                            href="https://haryphamdev.github.io/hoidanit-udemy/"
                             target="_blank"
                             className="sidebar-btn"
                             rel="noopener noreferrer"
                         >
-                            <FaGithub />
                             <span style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
-                                viewSource
+                                &#169; DungBumBeo Ques
                             </span>
                         </a>
                     </div>

@@ -9,7 +9,7 @@ const Header = () => {
         <Navbar bg="light" expand="lg">
             <Container>
                 {/* <Navbar.Brand href="#home">Bumbeobeo</Navbar.Brand> */}
-                <NavLink to="/" className='navbar-brand'>Bumbeobeo</NavLink>
+                <NavLink to="/" className='navbar-brand navbar-nav'>Bumbeobeo</NavLink>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
@@ -22,7 +22,6 @@ const Header = () => {
                             <NavDropdown.Item >Log in</NavDropdown.Item>
                             <NavDropdown.Item >Log out</NavDropdown.Item>
                             <NavDropdown.Item >Profile</NavDropdown.Item>
-
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

@@ -13,6 +13,7 @@ import { MdDashboard } from "react-icons/md";
 import { FaGem } from 'react-icons/fa';
 import sidebarBg from '../../assets/bg2.jpg';
 import './Sidebar.scss'
+import { Link } from 'react-router-dom';
 
 const Sidebar = (props) => {
     const { collapsed, toggled, handleToggleSidebar } = props;
@@ -50,6 +51,7 @@ const Sidebar = (props) => {
                             suffix={<span className='badge red'>New</span>}
                         >
                             Dashboard
+                            <Link to="/admins" />
                         </MenuItem>
                     </Menu>
                     <Menu iconShape="circle">
@@ -57,7 +59,10 @@ const Sidebar = (props) => {
                             icon={<FaGem />}
                             title="Features"
                         >
-                            <MenuItem>Users Management</MenuItem>
+                            <MenuItem>
+                                Users Management
+                                <Link to="/admins/manage-users" />
+                            </MenuItem>
                             <MenuItem >Quiz Test Management</MenuItem>
                             <MenuItem>Question Bank Management</MenuItem>
                         </SubMenu>

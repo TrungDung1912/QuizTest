@@ -1,20 +1,27 @@
 import ModalCreateUser from "./ModalCreateUser"
 import './ManageUser.scss'
+import { HiPlusCircle } from 'react-icons/hi'
+import { useState } from "react"
 
 const ManageUser = (props) => {
+    const [showModalCreateUser, setShowModalCreateUser] = useState(false)
+
     return (
-        <div classNameName="manage-user-container">
-            <div classNameName="title">
+        <div className="manage-user-container">
+            <div className="title">
                 Manage User
             </div>
-            <div classNameName="users-content">
-                <div>
-                    <button>Add new users</button>
+            <div className="users-content">
+                <div className="btn-add-new">
+                    <button className="btn btn-info" onClick={() => setShowModalCreateUser(true)}><HiPlusCircle /> Add new users</button>
                 </div>
-                <div>
-                    table users
+                <div className="table-users-container">
+                    table usersWE
                 </div>
-                <ModalCreateUser />
+                <ModalCreateUser
+                    show={showModalCreateUser}
+                    setShow={setShowModalCreateUser}
+                />
             </div>
         </div>
     )

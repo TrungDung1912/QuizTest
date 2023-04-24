@@ -16,7 +16,7 @@ const ManageUser = (props) => {
                     <button className="btn btn-info" onClick={() => setShowModalCreateUser(true)}><HiPlusCircle /> Add new users</button>
                 </div>
                 <div className="table-users-container">
-                    table usersWE
+                    table users
                 </div>
                 <ModalCreateUser
                     show={showModalCreateUser}

@@ -3,11 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { HiPlusCircle } from 'react-icons/hi'
 import { toast } from 'react-toastify';
-import { postCreateNewUser } from '../../../services/apiService.js'
+import { putUpdateUser } from '../../../services/apiService.js'
 import _ from 'lodash';
 
 const ModalUpdateUser = (props) => {
-    const { show, setShow, dataUpdate } = props;
+    const { show, setShow, dataUpdate, resetUpdateData } = props;
     const handleClose = () => {
         setShow(false);
         setEmail("")
@@ -16,6 +16,7 @@ const ModalUpdateUser = (props) => {
         setRole("User")
         setImage("")
         setPreviewImage("")
+        resetUpdateData()
     }
 
     const [email, setEmail] = useState("");
@@ -47,37 +48,11 @@ const ModalUpdateUser = (props) => {
         }
     }
 
-    const validateEmail = (email) => {
-        return String(email)
-            .toLowerCase()
-            .match(
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            );
-    };
-
-    const validatePassword = (password) => {
-        return String(password)
-            .match(
-                /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@@#$%^&*]).{8,}/
-            );
-    }
-
     const handleSubmitCreateUser = async () => {
         //Validate 
-        const isValidEmail = validateEmail(email);
-        const isValidPassword = validatePassword(password);
-        if (!isValidEmail) {
-            toast.error('Invalid email');
-            return;
-        }
-        if (!isValidPassword) {
-            toast.error('Password must include at least 8 characters with 1 [A->Z], 1 [a->z], 1[!@#$%^&*] and 1 [0->9]');
-            return;
-        }
-
-        let data = await postCreateNewUser(email, password, username, role, image)
+        let data = await putUpdateUser(dataUpdate.id, username, role, image)
         if (data && data.EC === 0) {
-            toast.success('Create new ' + role + ' success!!')
+            toast.success('Update ' + username + ' success!!!')
             handleClose();
             await props.fetchListUsers();
         }

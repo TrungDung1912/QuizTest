@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { HiPlusCircle } from 'react-icons/hi'
-import { toast } from 'react-toastify';
-import { putUpdateUser } from '../../../services/apiService.js'
 import _ from 'lodash';
 
-const ModalUpdateUser = (props) => {
-    const { show, setShow, dataUpdate, resetUpdateData } = props;
+const ModalViewUser = (props) => {
+    const { show, setShow, dataView, resetViewData } = props;
     const handleClose = () => {
         setShow(false);
         setEmail("")
@@ -16,7 +14,7 @@ const ModalUpdateUser = (props) => {
         setRole("User")
         setImage("")
         setPreviewImage("")
-        resetUpdateData()
+        resetViewData()
     }
 
     const [email, setEmail] = useState("");
@@ -28,16 +26,16 @@ const ModalUpdateUser = (props) => {
 
     //Use Effect only run when dataUpdate change
     useEffect(() => {
-        if (!_.isEmpty(dataUpdate)) {
-            setEmail(dataUpdate.email)
-            setUserName(dataUpdate.username)
-            setRole(dataUpdate.role)
+        if (!_.isEmpty(dataView)) {
+            setEmail(dataView.email)
+            setUserName(dataView.username)
+            setRole(dataView.role)
             setImage("")
-            if (dataUpdate.image) {
-                setPreviewImage(`data:image/jpeg;base64,${dataUpdate.image}`)
+            if (dataView.image) {
+                setPreviewImage(`data:image/jpeg;base64,${dataView.image}`)
             }
         }
-    }, [dataUpdate])
+    }, [dataView])
 
     const handleUploadImage = (e) => {
         if (e.target && e.target.files && e.target.files[0]) {
@@ -45,19 +43,6 @@ const ModalUpdateUser = (props) => {
             setImage(e.target.files[0])
         } else {
 
-        }
-    }
-
-    const handleSubmitUpdateUser = async () => {
-        //Validate 
-        let data = await putUpdateUser(dataUpdate.id, username, role, image)
-        if (data && data.EC === 0) {
-            toast.success('Update ' + username + ' success!!!')
-            handleClose();
-            await props.fetchListUsers();
-        }
-        if (data && data.EC !== 0) {
-            toast.error(data.EM)
         }
     }
 
@@ -116,13 +101,10 @@ const ModalUpdateUser = (props) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={() => handleSubmitUpdateUser()}>
-                        Save
-                    </Button>
                 </Modal.Footer>
             </Modal>
         </>
     );
 }
 
-export default ModalUpdateUser
+export default ModalViewUser

@@ -24,22 +24,22 @@ const Login = (props) => {
             );
     };
 
-    const validatePassword = (password) => {
-        return String(password)
-            .match(
-                /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@@#$%^&*]).{8,}/
-            );
-    }
+    // const validatePassword = (password) => {
+    //     return String(password)
+    //         .match(
+    //             /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@@#$%^&*]).{8,}/
+    //         );
+    // }
 
     const handleLogin = async () => {
         //validate
         const isValidEmail = validateEmail(email);
-        const isValidPassword = validatePassword(password);
+        // const isValidPassword = validatePassword(password);
         if (!isValidEmail) {
             toast.error('Invalid email');
             return;
         }
-        if (!isValidPassword) {
+        if (!password) {
             toast.error('Password must include at least 8 characters with 1 [A->Z], 1 [a->z], 1[!@#$%^&*] and 1 [0->9]');
             return;
         }

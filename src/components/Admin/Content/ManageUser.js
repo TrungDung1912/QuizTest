@@ -1,7 +1,6 @@
 import ModalCreateUser from "./ModalCreateUser"
 import './ManageUser.scss'
 import { HiPlusCircle } from 'react-icons/hi'
-import TableUser from "./TableUser"
 import { useEffect, useState } from "react"
 import { getAllUsers, getUserWithPaginate } from "../../../services/apiService";
 import ModalUpdateUser from "./ModalUpdateUser"

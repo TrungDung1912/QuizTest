@@ -37,7 +37,6 @@ const DetailQuiz = (props) => {
                 return { questionId: key, answers, questionDescription, image }
             })
             .value()
-        console.log(data)
         setDataQuiz(data)
     }
 
@@ -51,17 +50,56 @@ const DetailQuiz = (props) => {
             setIndex(index + 1)
     }
 
+    const handleFinishQuiz = () => {
+        // {
+        //     "quizId": 1,
+        //     "answers": [
+        //         { 
+        //             "questionId": 1,
+        //             "userAnswerId": [3, 4]
+        //         },
+        //         { 
+        //             "questionId": 2,
+        //             "userAnswerId": [6]
+        //         }
+        //     ]
+        // }
+        let payload = {
+            quizId: +quizId,
+            answers: []
+        }
+        let answers = [];
+        if (dataQuiz && dataQuiz.length > 0) {
+            dataQuiz.forEach(question => {
+                let questionId = question.questionId
+                let userAnswerId = [];
+
+                question.answers.forEach(a => {
+                    if (a.isSelected) {
+                        userAnswerId.push(a.id)
+                    }
+                })
+
+                answers.push({
+                    questionId: +questionId,
+                    userAnswerId: userAnswerId
+                })
+            })
+            payload.answers = answers
+            console.log(payload)
+        }
+    }
+
     const handleCheckBoxx = (answerId, questionId) => {
-        let dataQuizClone = _.cloneDeep(dataQuiz)
+        let dataQuizClone = _.cloneDeep(dataQuiz) //React hook doesn't merge state
         let question = dataQuizClone.find(item => +item.questionId === +questionId)
         if (question && question.answers) {
-            let b = question.answers.map(item => {
+            question.answers = question.answers.map(item => {
                 if (+item.id === answerId) {
                     item.isSelected = !item.isSelected
                 }
                 return item
             })
-            question.answers = b;
         }
         let index = dataQuizClone.findIndex(item => +item.questionId === +questionId)
         if (index > -1) {
@@ -84,7 +122,7 @@ const DetailQuiz = (props) => {
                 <div className='footer'>
                     <button className='btn btn-secondary' onClick={() => handlePrev()}>Prev</button>
                     <button className='btn btn-primary' onClick={() => handleNext()}>Next</button>
-                    <button className='btn btn-warning' onClick={() => handleNext()}>Finish</button>
+                    <button className='btn btn-warning' onClick={() => handleFinishQuiz()}>Finish</button>
                 </div>
             </div>
             <div className='right-content'>

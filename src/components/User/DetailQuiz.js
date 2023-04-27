@@ -15,6 +15,7 @@ const DetailQuiz = (props) => {
 
     const [isShowModalResult, setIsShowModalResult] = useState(false)
     const [dataModalResult, setDataModalResult] = useState({})
+
     useEffect(() => {
         fetchQuestions()
     }, [quizId])

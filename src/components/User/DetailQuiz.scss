@@ -3,29 +3,49 @@
     gap: 20px;
     padding: 50px;
     .left-content{
+        border: 2px solid #ccc;
         width: 70%;
-        border: 1px solid red;
+        padding: 20px;
+        border-radius: 7px;
+        box-shadow: 5px 5px #797676;
         .title{
            font-size: 30px; 
            font-weight: 600;
         }
         .q-content {
+            text-align: center;
             .question{
                 font-size: 20px;
                 font-weight: 600;
+                padding: 20px 0;
             }
             .answer {
-
+                .a-child{
+                    text-align: left;
+                    padding-left: 50px;
+                }
+            }
+            .q-image {
+                width: 100%;
+                height: 100px;
+                img{
+                    max-width: 100%;
+                    max-height: 100%;
+                }
             }
         }
         .footer {
+            margin: 25px;
             display: flex;
             gap: 15px;
             justify-content: center;
         }
     }
     .right-content{
-        border: 1px solid green;
+        border: 2px solid #fd7b01;
         width: 30%;
+        padding: 20px;
+        border-radius: 7px;
+        box-shadow: 5px 5px #a87426;
     }
 }

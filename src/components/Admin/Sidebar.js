@@ -13,9 +13,10 @@ import { MdDashboard } from "react-icons/md";
 import { FaGem } from 'react-icons/fa';
 import sidebarBg from '../../assets/bg2.jpg';
 import './Sidebar.scss'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Sidebar = (props) => {
+    const navigate = useNavigate()
     const { collapsed, toggled, handleToggleSidebar } = props;
     return (
         <>
@@ -40,7 +41,7 @@ const Sidebar = (props) => {
                         }}
                     >
                         <SiReactivex size={'2em'} color={"pink"} />
-                        <span style={{ paddingLeft: "20px" }}>DungBumBeo</span>
+                        <span style={{ paddingLeft: "20px", cursor: "pointer" }} onClick={() => navigate('/')}>DungBumBeo</span>
                     </div>
                 </SidebarHeader>
 
@@ -63,7 +64,10 @@ const Sidebar = (props) => {
                                 Users Management
                                 <Link to="/admins/manage-users" />
                             </MenuItem>
-                            <MenuItem >Quiz Test Management</MenuItem>
+                            <MenuItem >
+                                Quiz Test Management
+                                <Link to="/admins/manage-quizzes" />
+                            </MenuItem>
                             <MenuItem>Question Bank Management</MenuItem>
                         </SubMenu>
 

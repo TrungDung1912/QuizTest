@@ -120,8 +120,6 @@ const ModalCreateUser = (props) => {
                                 :
                                 <span>Preview Image</span>
                             }
-
-
                         </div>
                     </form>
                 </Modal.Body>

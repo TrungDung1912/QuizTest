@@ -6,6 +6,7 @@ import { RiImageAddFill } from 'react-icons/ri'
 import { HiMinusSm, HiPlusSm, HiOutlinePlusCircle, HiOutlineMinusCircle } from 'react-icons/hi'
 import { v4 as uuidv4 } from 'uuid'
 import _ from 'lodash'
+import Lightbox from 'react-awesome-lightbox'
 
 const Questions = (props) => {
     const options = [
@@ -32,6 +33,11 @@ const Questions = (props) => {
         ]
     )
 
+    const [isPreviewImage, setIsPreviewImage] = useState(false)
+    const [dataImagePreview, setDataImagePreview] = useState({
+        title: '',
+        url: ''
+    })
     const [selectedQuiz, setSelectedQuiz] = useState({})
 
     const handleAddRemoveQuestion = (type, id) => {
@@ -120,6 +126,18 @@ const Questions = (props) => {
 
     }
 
+    const handlePreviewImage = (questionId) => {
+        let questionsClone = _.cloneDeep(questions)
+        let index = questionsClone.findIndex(item => item.id === questionId)
+        if (index > -1) {
+            setDataImagePreview({
+                url: URL.createObjectURL(questionsClone[index].imageFile),
+                title: questionsClone[index].imageName,
+            })
+            setIsPreviewImage(true)
+        }
+    }
+
     const handleSubmitQuestionForQuiz = () => {
         console.log(questions)
     }
@@ -163,7 +181,7 @@ const Questions = (props) => {
                                         <input id={`${question.id}`} onChange={(e) => handleOnChangeFileQuestion(question.id, e)} type="file" hidden></input>
                                         <span>
                                             {
-                                                question.imageName ? question.imageName : '0 file is upload '
+                                                question.imageName ? <span style={{ cursor: "pointer", maxWidth: "100px" }} onClick={() => handlePreviewImage(question.id)}> {question.imageName} </span> : '0 file is upload '
                                             }
                                         </span>
                                     </div>
@@ -174,6 +192,7 @@ const Questions = (props) => {
                                         }
                                     </div>
                                 </div>
+
                                 {question.answers && question.answers.length > 0
                                     && question.answers.map((answer, index) => {
                                         return (
@@ -203,16 +222,27 @@ const Questions = (props) => {
 
                                     })
                                 }
+
                             </div>
                         )
                     })
                 }
                 {
                     questions && questions.length > 0 &&
-                    <div>
-                        <button
-                            onClick={() => { handleSubmitQuestionForQuiz() }} className="btn btn-warning">Save Question</button>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                        <button style={{ boxShadow: "3px 5px #ccc", border: "1px solid yellow" }}
+                            onClick={() => { handleSubmitQuestionForQuiz() }}
+                            className="btn btn-warning"
+                        >Save Question
+                        </button>
                     </div>
+                }
+                {isPreviewImage === true &&
+                    <Lightbox
+                        onClose={() => setIsPreviewImage(false)}
+                        image={dataImagePreview.url}
+                        title={dataImagePreview.title}>
+                    </Lightbox>
                 }
 
             </div>

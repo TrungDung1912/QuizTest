@@ -4,7 +4,7 @@ import ModalDeleteQuiz from "./ModalDeleteQuiz"
 import ModalUpdateQuiz from "./ModalUpdateQuiz"
 
 const TableQuiz = (props) => {
-    const [listQuiz, setListQuiz] = useState([])
+    const { listQuizz, setListQuizz } = props
     const [showModalDelete, setShowModalDelete] = useState(false)
     const [showModalUpdate, setShowModalUpdate] = useState(false)
     const [dataDelete, setDataDelete] = useState({})
@@ -19,7 +19,7 @@ const TableQuiz = (props) => {
     const fetchQuiz = async () => {
         let res = await getAllQuizForAdmin()
         if (res && res.EC === 0) {
-            setListQuiz(res.DT)
+            setListQuizz(res.DT)
         }
     }
 
@@ -31,10 +31,6 @@ const TableQuiz = (props) => {
     const handleClickBtnUpdate = (quiz) => {
         setDataUpdate(quiz)
         setShowModalUpdate(true)
-    }
-
-    const resetUpdateData = () => {
-        setDataUpdate({})
     }
 
     return (
@@ -51,8 +47,8 @@ const TableQuiz = (props) => {
                     </tr>
                 </thead>
                 <tbody style={{ backgroundColor: "#212529" }}>
-                    {listQuiz && listQuiz.length > 0 &&
-                        listQuiz.map((quiz, index) => {
+                    {listQuizz && listQuizz.length > 0 &&
+                        listQuizz.map((quiz, index) => {
                             return (
                                 <tr key={`table-quizs-${index}`}>
                                     <td>{quiz.id}</td>
@@ -69,7 +65,7 @@ const TableQuiz = (props) => {
                             )
                         })
                     }
-                    {listQuiz && listQuiz.length === 0 &&
+                    {listQuizz && listQuizz.length === 0 &&
                         <tr>
                             <td colSpan={'5'}>Empty Data!</td>
                         </tr>
@@ -89,7 +85,6 @@ const TableQuiz = (props) => {
                 dataUpdate={dataUpdate}
                 setDataUpdate={setDataUpdate}
                 fetchQuiz={fetchQuiz}
-                resetUpdateData={resetUpdateData}
             />
         </>
     )

@@ -1,8 +1,8 @@
 import './ManageQuiz.scss'
 import Select from 'react-select'
 import { HiPlusCircle } from 'react-icons/hi'
-import { useState } from 'react';
-import { postCreateNewQuiz } from '../../../../services/apiService';
+import { useEffect, useState } from 'react';
+import { getAllQuizForAdmin, postCreateNewQuiz } from '../../../../services/apiService';
 import { toast } from 'react-toastify';
 import TableQuiz from './TableQuiz';
 import Accordion from 'react-bootstrap/Accordion';
@@ -20,11 +20,24 @@ const ManageQuiz = (props) => {
     const [type, setType] = useState("")
     const [image, setImage] = useState("");
     const [previewImage, setPreviewImage] = useState("");
+    const [listQuiz, setListQuiz] = useState([])
 
     const handleUploadImage = (e) => {
         if (e.target && e.target.files && e.target.files[0]) {
             setPreviewImage(URL.createObjectURL(e.target.files[0]))
             setImage(e.target.files[0])
+        }
+    }
+
+    useEffect(() => {
+        fetchQuiz()
+    }, [])
+
+    const fetchQuiz = async () => {
+        let res = await getAllQuizForAdmin()
+        if (res && res.EC === 0) {
+            setListQuiz(res.DT)
+            console.log(res.DT)
         }
     }
 
@@ -37,6 +50,7 @@ const ManageQuiz = (props) => {
         let res = await postCreateNewQuiz(description, name, type?.value, image)
         if (res && res.EC === 0) {
             toast.success(res.EM)
+            await fetchQuiz();
             setName('')
             setDescription('')
             setPreviewImage(null)
@@ -90,7 +104,8 @@ const ManageQuiz = (props) => {
                 </Accordion.Item>
             </Accordion>
             <div className="list-detail mt-5">
-                <TableQuiz />
+                <TableQuiz listQuizz={listQuiz}
+                    setListQuizz={setListQuiz} />
             </div>
         </div>
     )

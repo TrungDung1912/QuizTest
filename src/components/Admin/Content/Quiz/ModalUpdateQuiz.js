@@ -8,6 +8,12 @@ import { putUpdateQuizForAdmin } from '../../../../services/apiService.js';
 
 const ModalUpdateQuiz = (props) => {
     const { show, setShow, dataUpdate, setDataUpdate } = props;
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [type, setType] = useState("EASY");
+    const [image, setImage] = useState("");
+    const [previewImage, setPreviewImage] = useState("");
+
     const handleClose = () => {
         setShow(false);
         setName("")
@@ -17,12 +23,6 @@ const ModalUpdateQuiz = (props) => {
         setPreviewImage("")
         setDataUpdate({})
     }
-
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
-    const [type, setType] = useState("EASY");
-    const [image, setImage] = useState("");
-    const [previewImage, setPreviewImage] = useState("");
 
     //Use Effect only run when dataUpdate change
     useEffect(() => {
@@ -49,6 +49,7 @@ const ModalUpdateQuiz = (props) => {
     const handleSubmitUpdateQuiz = async () => {
         //Validate 
         let data = await putUpdateQuizForAdmin(dataUpdate.id, name, description, type, image)
+        console.log(data.DT)
         if (data && data.EC === 0) {
             toast.success('Update ' + name + ' success!!!')
             handleClose();
@@ -62,10 +63,6 @@ const ModalUpdateQuiz = (props) => {
 
     return (
         <>
-            {/* <Button variant="primary" onClick={handleShow}>
-                Enter information
-            </Button> */}
-
             <Modal
                 show={show}
                 onHide={handleClose}
@@ -73,7 +70,7 @@ const ModalUpdateQuiz = (props) => {
                 backdrop="static"
                 className='modal-add-user'>
                 <Modal.Header closeButton>
-                    <Modal.Title>Update user</Modal.Title>
+                    <Modal.Title>Update Quiz</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form className="row g-3">
@@ -93,18 +90,16 @@ const ModalUpdateQuiz = (props) => {
                                 <option value="HARD">HARD</option>
                             </select>
                         </div>
-                        <div className='col-md-12'>
-                            <label className="form-label label-upload" htmlFor='labelUpload'><HiPlusCircle color='green' />Upload File Image</label>
-                            <input type="file" hidden id='labelUpload' onChange={(event) => handleUploadImage(event)} />
+                        <div className='form-group'>
+                            <label className="form-label label-upload" htmlFor='labelUploadd'><HiPlusCircle color='red' />Upload File Image</label>
+                            <input className='form-control' type="file" hidden id='labelUploadd' onChange={(event) => handleUploadImage(event)} />
                         </div>
-                        <div className='col-md-12 img-preview'>
+                        <div className='img-preview' >
                             {previewImage ?
                                 <img src={previewImage} alt='' />
                                 :
                                 <span>Preview Image</span>
                             }
-
-
                         </div>
                     </form>
                 </Modal.Body>

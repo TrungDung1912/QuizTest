@@ -1,0 +1,85 @@
+.questions-container{
+    padding: 15px;
+    width: 70%;
+    margin: 0 auto;
+    .title{
+        margin-bottom: 15px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .questions-content{
+        display: grid;
+        gap: 20px;
+        .description {
+            width: 50%;
+        }
+        .img-preview{
+            border: 1px dashed #ccc;
+            border-radius: 5px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ccc;
+            img{
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+        .group-upload {
+            .label-upload{
+                gap: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: fit-content;
+                padding: 3px 10px;
+                border-radius: 10px;
+                background-color: #eeeeee;
+                cursor: pointer;
+                &:hover {
+                    background-color: #dcdcdc;
+                }
+            }   
+        }
+        .btn-add{
+            width: 60px;
+            margin: 0 auto;
+            .icon-add{
+                font-size: 30px;
+                color: rgb(231, 136, 11);
+                cursor: pointer;
+            }
+            .icon-remove{
+                font-size: 30px;
+                color: rgb(8, 230, 38);
+                cursor: pointer;
+            }
+        }
+    }
+    .answer-content{
+        padding-left: 20px;
+        padding-top: 20px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        .iscorrect{
+            font-size: 20px;
+        }
+        .answer-name{
+            width: 60%;
+        }
+        .btn-group {
+            .icon-add{
+                font-size: 30px;
+                color: rgb(231, 136, 11);
+                cursor: pointer;
+            }
+            .icon-remove{
+                font-size: 30px;
+                color: rgb(8, 230, 38);
+                cursor: pointer;
+            }
+        }
+    }
+}

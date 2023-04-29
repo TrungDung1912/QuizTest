@@ -1,20 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "react-select"
 import './Questions.scss'
-import { TiPlus } from 'react-icons/ti'
 import { RiImageAddFill } from 'react-icons/ri'
 import { HiMinusSm, HiPlusSm, HiOutlinePlusCircle, HiOutlineMinusCircle } from 'react-icons/hi'
 import { v4 as uuidv4 } from 'uuid'
 import _ from 'lodash'
 import Lightbox from 'react-awesome-lightbox'
+import { getAllQuizForAdmin } from "../../../../services/apiService"
+import { postCreateNewAnswerForQuiz, postCreateNewQuestionForQuiz } from "../../../../services/apiService";
 
 const Questions = (props) => {
-    const options = [
-        { value: 'EASY', label: 'EASY' },
-        { value: 'MEDIUM', label: 'MEDIUM' },
-        { value: 'HARD', label: 'HARD' },
-    ];
-
     const [questions, setQuestions] = useState(
         [
             {
@@ -38,7 +33,26 @@ const Questions = (props) => {
         title: '',
         url: ''
     })
+
     const [selectedQuiz, setSelectedQuiz] = useState({})
+    const [listQuiz, setListQuiz] = useState([])
+
+    useEffect(() => {
+        fetchQuiz()
+    }, [])
+
+    const fetchQuiz = async () => {
+        let res = await getAllQuizForAdmin()
+        if (res && res.EC === 0) {
+            let newQuiz = res.DT.map(item => {
+                return {
+                    value: item.id,
+                    label: `${item.id}-${item.description}`
+                }
+            })
+            setListQuiz(newQuiz)
+        }
+    }
 
     const handleAddRemoveQuestion = (type, id) => {
         if (type === 'ADD') {
@@ -111,7 +125,7 @@ const Questions = (props) => {
         let index = questionsClone.findIndex(item => item.id === questionId)
         if (index > -1) {
             questionsClone[index].answers = questionsClone[index].answers.map(answer => {
-                if (answer.id = answerId) {
+                if (answer.id === answerId) {
                     if (type === 'CHECKBOX') {
                         answer.isCorrect = value
                     }
@@ -138,8 +152,25 @@ const Questions = (props) => {
         }
     }
 
-    const handleSubmitQuestionForQuiz = () => {
-        console.log(questions)
+    const handleSubmitQuestionForQuiz = async () => {
+        //validate
+
+
+        //submit question
+        for (const question of questions) {
+            const q = await postCreateNewQuestionForQuiz(
+                +selectedQuiz.value,
+                question.description,
+                question.imageFile
+            );
+            for (const answer of question.answers) {
+                await postCreateNewAnswerForQuiz(
+                    answer.description,
+                    answer.isCorrect,
+                    q.DT.id
+                )
+            }
+        }
     }
 
     return (
@@ -154,8 +185,7 @@ const Questions = (props) => {
                     <Select
                         defaultValue={selectedQuiz}
                         onChange={setSelectedQuiz}
-                        options={options}
-                        placeholder={"Quiz type ..."}
+                        options={listQuiz}
                     />
                 </div>
                 <div className="mt-3 mb-2">
@@ -201,14 +231,16 @@ const Questions = (props) => {
                                                     className="form-check-input iscorrect"
                                                     type="checkbox"
                                                     checked={answer.isCorrect}
-                                                    onChange={(e) => handleAnswerQuestion('CHECKBOX', question.id, answer.id, e.target.checked)} />
+                                                    onChange={(e) => handleAnswerQuestion('CHECKBOX', question.id, answer.id, e.target.checked)}
+                                                />
                                                 <div className="form-floating description answer-name">
                                                     <input
                                                         type="text"
                                                         className="form-control"
                                                         placeholder="ex: nive"
                                                         value={answer.description}
-                                                        onChange={(e) => handleAnswerQuestion('INPUT', question.id, answer.id, e.target.value)} />
+                                                        onChange={(e) => handleAnswerQuestion('INPUT', question.id, answer.id, e.target.value)}
+                                                    />
                                                     <label >Answer {index + 1}</label>
                                                 </div>
                                                 <div className="btn-group">

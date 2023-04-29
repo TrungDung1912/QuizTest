@@ -9,7 +9,6 @@ import Accordion from 'react-bootstrap/Accordion';
 import QuizQA from './QuizQA';
 import AssignQuiz from './AssignQuiz';
 
-
 const options = [
     { value: 'EASY', label: 'EASY' },
     { value: 'MEDIUM', label: 'MEDIUM' },
@@ -113,13 +112,13 @@ const ManageQuiz = (props) => {
                 <Accordion.Item eventKey="1">
                     <Accordion.Header>Update Q/A Quizzes</Accordion.Header>
                     <Accordion.Body>
-                        <QuizQA />
+                        <div className='list-detail'><QuizQA /></div>
                     </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="2">
                     <Accordion.Header>Assign to User</Accordion.Header>
                     <Accordion.Body>
-                        <AssignQuiz />
+                        <div className='list-detail'><AssignQuiz /></div>
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>

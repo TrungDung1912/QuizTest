@@ -8,25 +8,26 @@ import _ from 'lodash'
 import Lightbox from 'react-awesome-lightbox'
 import { getAllQuizForAdmin } from "../../../../services/apiService"
 import { postCreateNewAnswerForQuiz, postCreateNewQuestionForQuiz } from "../../../../services/apiService";
+import { toast } from 'react-toastify';
 
 const Questions = (props) => {
-    const [questions, setQuestions] = useState(
-        [
-            {
-                id: uuidv4(),
-                description: '',
-                imageFile: '',
-                imageName: '',
-                answers: [
-                    {
-                        id: uuidv4(),
-                        description: '',
-                        isCorrect: false
-                    },
-                ]
-            }
-        ]
-    )
+    const initQuestions = [
+        {
+            id: uuidv4(),
+            description: '',
+            imageFile: '',
+            imageName: '',
+            answers: [
+                {
+                    id: uuidv4(),
+                    description: '',
+                    isCorrect: false
+                },
+            ]
+        }
+    ]
+
+    const [questions, setQuestions] = useState(initQuestions)
 
     const [isPreviewImage, setIsPreviewImage] = useState(false)
     const [dataImagePreview, setDataImagePreview] = useState({
@@ -154,6 +155,48 @@ const Questions = (props) => {
 
     const handleSubmitQuestionForQuiz = async () => {
         //validate
+        if (_.isEmpty(selectedQuiz)) {
+            toast.error("Please choose a quiz")
+            return;
+        }
+
+        //validate answer
+        let isValidAnswer = true
+        let indexQ = 0, indexA = 0
+        for (let i = 0; i < questions.length; i++) {
+            for (let j = 0; j < questions[i].answers.length; j++) {
+                if (!questions[i].answers[j].description) {
+                    isValidAnswer = false
+                    indexA = j
+                    break
+                }
+            }
+            indexQ = i
+            if (isValidAnswer === false) {
+                break
+            }
+        }
+
+        if (isValidAnswer === false) {
+            toast.error(`Not Empty Answer ${indexA + 1} at Question ${indexQ + 1}`)
+            return;
+        }
+
+        //validate question
+        let isValidQuestion = true
+        let indexQ1 = 0
+        for (let i = 0; i < questions.length; i++) {
+            if (!questions[i].description) {
+                isValidQuestion = false;
+                indexQ1 = i
+                break;
+            }
+        }
+
+        if (isValidQuestion === false) {
+            toast.error(`Not Empty Description for Question ${indexQ1 + 1}`)
+            return;
+        }
 
 
         //submit question
@@ -171,6 +214,9 @@ const Questions = (props) => {
                 )
             }
         }
+
+        toast.success('Create Question and Answer success!!!')
+        setQuestions(initQuestions)
     }
 
     return (

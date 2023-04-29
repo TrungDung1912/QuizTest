@@ -38,7 +38,6 @@ const ManageQuiz = (props) => {
         let res = await getAllQuizForAdmin()
         if (res && res.EC === 0) {
             setListQuiz(res.DT)
-            console.log(res.DT)
         }
     }
 

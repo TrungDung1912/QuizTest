@@ -1,4 +1,4 @@
-import CountDown from "./CountDown"
+import CountDown from './CountDown'
 import { useRef } from 'react'
 
 const RightContent = (props) => {

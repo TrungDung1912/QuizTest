@@ -62,6 +62,13 @@ const Login = (props) => {
         navigate('/register')
     }
 
+    const handleKeyDown = (e) => {
+        console.log(e.key)
+        if (e && e.key === 'Enter') {
+            handleLogin()
+        }
+    }
+
     return (
         <div className="login-container">
             <div className='header'>
@@ -81,7 +88,7 @@ const Login = (props) => {
                 </div>
                 <div className='form-group password-group'>
                     <label>Password(*)</label>
-                    <input onChange={(event) => setPassword(event.target.value)} value={password} className='form-control' type={isShowPassword ? 'type' : 'password'} />
+                    <input onKeyDown={(e) => handleKeyDown(e)} onChange={(event) => setPassword(event.target.value)} value={password} className='form-control' type={isShowPassword ? 'type' : 'password'} />
                     {isShowPassword ?
                         <span className='icons-eye'
                             onClick={() => setIsShowPassword(false)}>

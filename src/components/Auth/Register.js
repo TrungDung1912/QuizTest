@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 import { postRegister } from '../../services/apiService.js'
 import { useNavigate } from 'react-router-dom'
 import { VscEye, VscEyeClosed } from 'react-icons/vsc'
+import Language from '../Header/Language'
 
 const Register = () => {
     const [email, setEmail] = useState("")
@@ -59,7 +60,8 @@ const Register = () => {
         <div className="register-container">
             <div className='header'>
                 <span>Do have an account yet?</span>
-                <button onClick={() => { handleNavigateLogin() }}>Log in</button>
+                <button style={{ marginRight: "20px" }} onClick={() => { handleNavigateLogin() }}>Log in</button>
+                <Language />
             </div>
             <div className='title col-4 mx-auto'>
                 DungBumBeo

@@ -4,9 +4,12 @@ import Modal from 'react-bootstrap/Modal';
 import { HiPlusCircle } from 'react-icons/hi'
 import { toast } from 'react-toastify';
 import { postCreateNewUser } from '../../../services/apiService.js'
+import { useTranslation } from 'react-i18next';
+
 
 const ModalCreateUser = (props) => {
     const { show, setShow } = props;
+    const { t } = useTranslation()
     const handleClose = () => {
         setShow(false);
         setEmail("")

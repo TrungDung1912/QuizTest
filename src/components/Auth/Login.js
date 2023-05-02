@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import { doLogin } from '../../redux/action/userAction'
 import { ImSpinner10 } from 'react-icons/im'
 import Language from '../Header/Language'
+import { useTranslation } from 'react-i18next';
 
 const Login = (props) => {
     const [email, setEmail] = useState("")
@@ -16,6 +17,7 @@ const Login = (props) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false)
+    const { t } = useTranslation()
 
     const validateEmail = (email) => {
         return String(email)
@@ -73,23 +75,23 @@ const Login = (props) => {
     return (
         <div className="login-container">
             <div className='header'>
-                <span>Don't have an account yet?</span>
-                <button style={{ marginRight: "20px" }} onClick={() => { handleNavigateRegister() }}>Sign up</button>
+                <span>{t('login.title1.sloganheader')}</span>
+                <button style={{ marginRight: "20px" }} onClick={() => { handleNavigateRegister() }}>{t('login.title1.signup')}</button>
                 <Language />
             </div>
             <div className='title col-4 mx-auto'>
                 DungBumBeo
             </div>
             <div className='welcome col-4 mx-auto'>
-                Hello, who’s this?
+                {t('login.title2.slogan')}
             </div>
             <div className='content-form col-4 mx-auto'>
                 <div className='form-group'>
-                    <label>Email</label>
+                    <label>{t('login.title3.email')}</label>
                     <input onChange={(event) => setEmail(event.target.value)} value={email} className='form-control' type='email' />
                 </div>
                 <div className='form-group password-group'>
-                    <label>Password(*)</label>
+                    <label>{t('login.title3.password')}(*)</label>
                     <input onKeyDown={(e) => handleKeyDown(e)} onChange={(event) => setPassword(event.target.value)} value={password} className='form-control' type={isShowPassword ? 'type' : 'password'} />
                     {isShowPassword ?
                         <span className='icons-eye'
@@ -102,7 +104,7 @@ const Login = (props) => {
                         </span>
                     }
                 </div>
-                <span className='forgot-password'>Forgot Password?</span>
+                <span className='forgot-password'>{t('login.title3.forgotpassword')}</span>
                 <div>
                     <button
                         onClick={() => { handleLogin() }}
@@ -110,11 +112,11 @@ const Login = (props) => {
                         disabled={isLoading}
                     >
                         {isLoading && <ImSpinner10 className='loader-icon' />}
-                        <span>Login to DungBumBeo</span>
+                        <span>{t('login.title4.login')}</span>
                     </button>
                 </div>
                 <div className='text-center'>
-                    <span className='back' onClick={() => { navigate('/') }}> &#60; &#60; Come back home &#62; &#62;</span>
+                    <span className='back' onClick={() => { navigate('/') }}> &#60; &#60;{t('login.title4.homepage')}&#62; &#62;</span>
                 </div>
             </div>
         </div>

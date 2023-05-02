@@ -6,5 +6,137 @@
             "login": "Hãy bắt đầu thôi. Nó miễn phí",
             "doquiz": "Làm quiz lun nào"
         }
+    },
+    "header": {
+        "title1": "Trang chủ",
+        "title2": "Người dùng",
+        "title3": "Quản trị viên",
+        "title4": {
+            "login": "Đăng nhập",
+            "register": "Đăng kí"
+        },
+        "title5": {
+            "profile": "Hồ sơ",
+            "logout": "Đăng xuất"
+        }
+    },
+    "login": {
+        "title1": {
+            "sloganheader": "Bạn khum có tài khoản sao? ",
+            "signup": "Đăng kí"
+        },
+        "title2": {
+            "slogan": "Xin chào, ai đó?"
+        },
+        "title3": {
+            "email": "Email",
+            "password": "Mật khẩu",
+            "forgotpassword": "Quên mật khẩu?"
+        },
+        "title4": {
+            "login": "Đăng nhập vào DungBumBeo",
+            "homepage": "Quay về trang chủ DungBumBeo"
+        }
+    },
+    "register": {
+        "title1": {
+            "sloganheader": "Bạn đã có tài khoản?",
+            "signin": "Đăng nhập"
+        },
+        "title2": {
+            "slogan": "Chiến thui nào?"
+        },
+        "title3": {
+            "email": "Email",
+            "username": "Tên đăng nhập",
+            "password": "Mật khẩu"
+        },
+        "title4": {
+            "register": "Đăng kí",
+            "homepage": "Quay về trang chủ DungBumBeo"
+        }
+    },
+    "listquiz": {
+        "title1": {
+            "start": "Bắt đầu!",
+            "warning": "Bạn không có bài quiz nào ..."
+        }
+    },
+    "dashboard": {
+        "title1": {
+            "slogan": "Bảng phân tích dữ liệu"
+        },
+        "title2": {
+            "user": "Tổng người dùng",
+            "quiz": "Tổng bài quiz",
+            "question": "Tổng câu hỏi",
+            "answer": "Tổng câu trả lời"
+        }
+    },
+    "sidebar": {
+        "title1": {
+            "dashboard": "Trang điều khiển",
+            "new": "Mới"
+        },
+        "title2": {
+            "user": "Quản lí người dùng",
+            "quiz": "Quản lí bài quiz",
+            "question": "Quản lí câu hỏi"
+        }
+    },
+    "manage": {
+        "title1": {
+            "main": "Quản lí người dùng",
+            "button": "Thêm người dùng"
+        }
+    },
+    "admin": {
+        "title1": {
+            "profile": "Thông tin cá nhân",
+            "logout": "Đăng xuất"
+        }
+    },
+    "table": {
+        "title1": {
+            "id": "ID.",
+            "username": "Tên",
+            "email": "Email",
+            "role": "Vị trí",
+            "action": "Tác vụ"
+        },
+        "title2": {
+            "view": "Xem",
+            "update": "Cập nhật",
+            "delete": "Xóa"
+        },
+        "title3": {
+            "data": "Dữ liệu rỗng!",
+            "prev": "< Trước",
+            "next": "Sau >"
+        }
+    },
+    "quiz": {
+        "title1": {
+            "slogan": "Quản lí bài Quiz",
+            "username": "Tên",
+            "description": "Mô tả",
+            "image": "Tải ảnh lên",
+            "previmg": "Xem trước ảnh",
+            "save": "Lưu"
+        },
+        "title2": {
+            "slogan": "Cập nhật Q/A của bài Quiz"
+        },
+        "title3": {
+            "slogan": "Gán bài thi cho người dùng"
+        }
+    },
+    "question": {
+        "title1": {
+            "slogan": "Quản lí câu hỏi",
+            "select": "Chọn bài quiz: ",
+            "add": "Thêm câu hỏi: ",
+            "save": "Lưu câu hỏi"
+        }
     }
 }

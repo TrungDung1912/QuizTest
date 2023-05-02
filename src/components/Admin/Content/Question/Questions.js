@@ -9,6 +9,8 @@ import Lightbox from 'react-awesome-lightbox'
 import { getAllQuizForAdmin } from "../../../../services/apiService"
 import { postCreateNewAnswerForQuiz, postCreateNewQuestionForQuiz } from "../../../../services/apiService";
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
+
 
 const Questions = (props) => {
     const initQuestions = [
@@ -26,6 +28,7 @@ const Questions = (props) => {
             ]
         }
     ]
+    const { t } = useTranslation()
 
     const [questions, setQuestions] = useState(initQuestions)
 
@@ -222,12 +225,12 @@ const Questions = (props) => {
     return (
         <div className="questions-container">
             <div className="title">
-                Manage Question
+                {t('question.title1.slogan')}
             </div>
             <hr />
             <div className="add-new-question">
                 <div className="col-6 form-group">
-                    <label className="mb-2">Select Quiz: </label>
+                    <label className="mb-2">{t('question.title1.select')} </label>
                     <Select
                         defaultValue={selectedQuiz}
                         onChange={setSelectedQuiz}
@@ -235,7 +238,7 @@ const Questions = (props) => {
                     />
                 </div>
                 <div className="mt-3 mb-2">
-                    Add Questions:
+                    {t('question.title1.add')}
                 </div>
                 {
                     questions && questions.length > 0 &&
@@ -311,7 +314,7 @@ const Questions = (props) => {
                         <button style={{ boxShadow: "3px 5px #ccc", border: "1px solid yellow" }}
                             onClick={() => { handleSubmitQuestionForQuiz() }}
                             className="btn btn-warning"
-                        >Save Question
+                        >{t('question.title1.save')}
                         </button>
                     </div>
                 }

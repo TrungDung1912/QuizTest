@@ -14,10 +14,14 @@ import { FaGem } from 'react-icons/fa';
 import sidebarBg from '../../assets/bg2.jpg';
 import './Sidebar.scss'
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 
 const Sidebar = (props) => {
     const navigate = useNavigate()
     const { collapsed, toggled, handleToggleSidebar } = props;
+    const { t, i18n } = useTranslation()
+
     return (
         <>
             <ProSidebar
@@ -49,27 +53,27 @@ const Sidebar = (props) => {
                     <Menu iconShape="circle">
                         <MenuItem
                             icon={<MdDashboard />}
-                            suffix={<span className='badge red'>New</span>}
+                            suffix={<span className='badge red'>{t('sidebar.title1.new')}</span>}
                         >
-                            Dashboard
+                            {t('sidebar.title1.dashboard')}
                             <Link to="/admins" />
                         </MenuItem>
                     </Menu>
                     <Menu iconShape="circle">
                         <SubMenu
                             icon={<FaGem />}
-                            title="Features"
+                            title={i18n.language === 'vi' ? 'Chức năng' : 'Features'}
                         >
                             <MenuItem>
-                                Users Management
+                                {t('sidebar.title2.user')}
                                 <Link to="/admins/manage-users" />
                             </MenuItem>
                             <MenuItem >
-                                Quiz Test Management
+                                {t('sidebar.title2.quiz')}
                                 <Link to="/admins/manage-quizzes" />
                             </MenuItem>
                             <MenuItem>
-                                Question Bank Management
+                                {t('sidebar.title2.question')}
                                 <Link to="/admins/manage-questions" />
                             </MenuItem>
                         </SubMenu>

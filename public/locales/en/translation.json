@@ -6,5 +6,121 @@
             "login": "Get's started. It's free",
             "doquiz": "Doing Quiz Now"
         }
+    },
+    "header": {
+        "title1": "Homepage",
+        "title2": "User",
+        "title3": "Admin",
+        "title4": {
+            "login": "Log in",
+            "register": "Register"
+        },
+        "title5": {
+            "profile": "Profile",
+            "logout": "Log out"
+        }
+    },
+    "login": {
+        "title1": {
+            "sloganheader": "You don't have an account yet?",
+            "signup": "Sign up"
+        },
+        "title2": {
+            "slogan": "Hello, who you are?"
+        },
+        "title3": {
+            "email": "Email",
+            "password": "Password",
+            "forgotpassword": "Forgot password?"
+        },
+        "title4": {
+            "login": "Login to DungBumBeo",
+            "homepage": "Come back to DungBumBeo"
+        }
+    },
+    "register": {
+        "title1": {
+            "sloganheader": "You have an account yet?",
+            "signin": "Sign in"
+        },
+        "title2": {
+            "slogan": "Let's go, sir?"
+        },
+        "title3": {
+            "email": "Email",
+            "username": "Username",
+            "password": "Password"
+        },
+        "title4": {
+            "register": "Register",
+            "homepage": "Come back to DungBumBeo"
+        }
+    },
+    "listquiz": {
+        "title1": {
+            "start": "Start now!",
+            "warning": "You don't have any quiz ..."
+        }
+    },
+    "dashboard": {
+        "title1": {
+            "slogan": "Analytics DashBoard"
+        },
+        "title2": {
+            "user": "Total User",
+            "quiz": "Total Quizzes",
+            "question": "Total Questions",
+            "answer": "Total Answers"
+        }
+    },
+    "sidebar": {
+        "title1": {
+            "dashboard": "Dashboard",
+            "new": "New"
+        },
+        "title2": {
+            "user": "Users Management",
+            "quiz": "Quiz Test Management",
+            "question": "Question Bank Management"
+        }
+    },
+    "manage": {
+        "title1": {
+            "main": "Manage User",
+            "button": "Add new users"
+        }
+    },
+    "admin": {
+        "title1": {
+            "profile": "Profile",
+            "logout": "Log out"
+        }
+    },
+    "table": {
+        "title1": {
+            "id": "ID.",
+            "username": "Username",
+            "email": "Email",
+            "role": "Role",
+            "action": "Action"
+        },
+        "title2": {
+            "view": "View",
+            "update": "Update",
+            "delete": "Delete"
+        },
+        "title3": {
+            "data": "Empty Data!",
+            "prev": "< Pre",
+            "next": "Next >"
+        }
+    },
+    "question": {
+        "title1": {
+            "slogan": "Manage Question",
+            "select": "Select Quiz: ",
+            "add": "Add Questions:",
+            "save": "Save question"
+        }
     }
 }

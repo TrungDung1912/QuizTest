@@ -54,6 +54,19 @@ body {
         }
       }
     }
+    .navbar-brand{
+      .brand-icon {
+        animation: spin 5s infinite linear;
+      }
+      @keyframes spin {
+        from {
+          transform: scale(1) rotate(0deg);
+        }
+        to{
+          transform: scale(1) rotate(360deg);
+        }
+      }
+    }
   }
   .homepage-container{
     margin-top: 150px;

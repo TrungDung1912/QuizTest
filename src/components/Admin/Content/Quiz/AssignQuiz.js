@@ -61,7 +61,7 @@ const AssignQuiz = (props) => {
                 />
             </div>
             <div className="col-6 form-group">
-                <label className="mb-2">Select Quiz: </label>
+                <label className="mb-2">Select User: </label>
                 <Select
                     defaultValue={selectedUser}
                     onChange={setSelectedUser}

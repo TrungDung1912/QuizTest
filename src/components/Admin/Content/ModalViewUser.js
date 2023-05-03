@@ -92,8 +92,6 @@ const ModalViewUser = (props) => {
                                 :
                                 <span>Preview Image</span>
                             }
-
-
                         </div>
                     </form>
                 </Modal.Body>

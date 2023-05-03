@@ -138,5 +138,41 @@
             "add": "Thêm câu hỏi: ",
             "save": "Lưu câu hỏi"
         }
+    },
+    "profile": {
+        "title1": {
+            "slogan": "Hồ sơ",
+            "main": "Thông tin chính",
+            "password": "Cài lại mật khẩu",
+            "history": "Lịch sử"
+        },
+        "title2": {
+            "password": "Mật khẩu",
+            "repassword": "Mật khẩu mới",
+            "repassword2": "Xác nhận mật khẩu mới",
+            "save": "Lưu"
+        },
+        "title3": {
+            "close": "Đóng"
+        },
+        "title4": {
+            "id": "ID.",
+            "description": "Mô tả",
+            "name": "Tên Quiz",
+            "total_question": "Tổng số câu",
+            "total_correct": "Tổng số câu đúng",
+            "date": "Thời gian",
+            "action": "Hành động"
+        }
+    },
+    "header1": {
+        "home": "Trang chủ",
+        "user": "Người dùng",
+        "quiz": "Bài thi",
+        "save": "Lưu",
+        "prev": "Trước",
+        "next": "Sau",
+        "finish": "Kết thúc",
+        "question": "Câu hỏi"
     }
 }

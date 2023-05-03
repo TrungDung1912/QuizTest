@@ -51,7 +51,6 @@ const ModalUpdateUser = (props) => {
     const handleSubmitUpdateUser = async () => {
         //Validate 
         let data = await putUpdateUser(dataUpdate.id, username, role, image)
-        console.log(data.DT)
         if (data && data.EC === 0) {
             toast.success('Update ' + username + ' success!!!')
             handleClose();

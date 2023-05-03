@@ -1,3 +1,4 @@
+import { truncate } from "lodash";
 import { FETCH_USER_LOGIN_SUCCESS } from "../action/userAction";
 import { FETCH_USER_LOGOUT_SUCCESS } from "../action/userAction";
 

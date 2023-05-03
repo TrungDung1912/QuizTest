@@ -115,6 +115,22 @@
             "next": "Next >"
         }
     },
+    "quiz": {
+        "title1": {
+            "slogan": "Quiz Management",
+            "username": "Username",
+            "description": "Description",
+            "image": "Upload Image File",
+            "previmg": "Preview Image",
+            "save": "Save"
+        },
+        "title2": {
+            "slogan": "Update Q/A of Quizzes"
+        },
+        "title3": {
+            "slogan": "Assign Quiz to users"
+        }
+    },
     "question": {
         "title1": {
             "slogan": "Manage Question",
@@ -122,5 +138,41 @@
             "add": "Add Questions:",
             "save": "Save question"
         }
+    },
+    "profile": {
+        "title1": {
+            "slogan": "Profile",
+            "main": "Main Information",
+            "password": "Re-Password",
+            "history": "History"
+        },
+        "title2": {
+            "password": "Password",
+            "repassword": "Re-Password",
+            "repassword2": "Confirm Re-Password",
+            "save": "Save"
+        },
+        "title3": {
+            "close": "Close"
+        },
+        "title4": {
+            "id": "ID.",
+            "description": "Description",
+            "name": "Quiz Name",
+            "total_question": "Total Question",
+            "total_correct": "Total Correct",
+            "date": "Time",
+            "action": "Action"
+        }
+    },
+    "header1": {
+        "home": "Home",
+        "user": "User",
+        "quiz": "Quiz",
+        "save": "Save question",
+        "prev": "Prev",
+        "next": "Next",
+        "finish": "Finish",
+        "question": "Question"
     }
 }

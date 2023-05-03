@@ -7,6 +7,9 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 import Language from "../Header/Language";
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useTranslation } from 'react-i18next';
+import { postLogOut } from "../../services/apiService";
+import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const Admin = (props) => {
@@ -25,10 +28,6 @@ const Admin = (props) => {
                     </span>
                     <div className="right-side">
                         <Language />
-                        <NavDropdown title={i18n.language === 'vi' ? 'Cài đặt' : 'Setting'} id="basic-nav-dropdown">
-                            <NavDropdown.Item >{t('admin.title1.profile')}</NavDropdown.Item>
-                            <NavDropdown.Item >{t('admin.title1.logout')}</NavDropdown.Item>
-                        </NavDropdown>
                     </div>
                 </div>
                 <div className="admin-main">

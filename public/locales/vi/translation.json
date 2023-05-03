@@ -174,5 +174,12 @@
         "next": "Sau",
         "finish": "Kết thúc",
         "question": "Câu hỏi"
+    },
+    "quiz1": {
+        "result": "Kết quả",
+        "total-question": "Số câu hỏi",
+        "total-correct": "Số câu trả lời đúng",
+        "show-answer": "Hiển thị đáp án",
+        "close": "Đóng"
     }
 }

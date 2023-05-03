@@ -174,5 +174,12 @@
         "next": "Next",
         "finish": "Finish",
         "question": "Question"
+    },
+    "quiz1": {
+        "result": "Result",
+        "total-question": "Total Question",
+        "total-correct": "Total Correct",
+        "show-answer": "Show Answer",
+        "close": "Close"
     }
 }

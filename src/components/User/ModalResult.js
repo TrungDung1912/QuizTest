@@ -16,21 +16,21 @@ const ModalResult = (props) => {
                 backdrop="static"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>{t('quiz.result')}</Modal.Title>
+                    <Modal.Title>{t('quiz1.result')}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div>{t('quiz.total-question')}: <b>{dataModalResult.countTotal} </b></div>
-                    <div>{t('quiz.total-correct')}: <b>{dataModalResult.countCorrect} </b></div>
+                    <div>{t('quiz1.total-question')}: <b>{dataModalResult.countTotal} </b></div>
+                    <div>{t('quiz1.total-correct')}: <b>{dataModalResult.countCorrect} </b></div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => {
                         handleClose();
                         props.handleShowAnswer();
                     }}>
-                        {t('quiz.show-answer')}
+                        {t('quiz1.show-answer')}
                     </Button>
                     <Button variant="primary" onClick={handleClose}>
-                        {t('quiz.close')}
+                        {t('quiz1.close')}
                     </Button>
                 </Modal.Footer>
             </Modal>
